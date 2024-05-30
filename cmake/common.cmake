@@ -1,3 +1,17 @@
+# Set the environment variable to find Boost (TO BE EDITED)
+set(ENV{BOOST_ROOT} "/home/vinicius/workspace/externals/boost_1_85_0")
+
+# Find the Boost library
+find_package(Boost 1.85 REQUIRED)
+
+if (Boost_FOUND)
+    message(STATUS "Boost found: ${Boost_VERSION}")
+    message(STATUS "Boost include dirs: ${Boost_INCLUDE_DIRS}")
+    message(STATUS "Boost library dirs: ${Boost_LIBRARY_DIRS}")
+else()
+    message(FATAL_ERROR "Boost not found")
+endif()
+
 # Set up the compile flags interface library
 add_library(solution_compiler_flags INTERFACE)
 target_compile_features(solution_compiler_flags INTERFACE cxx_std_20)
